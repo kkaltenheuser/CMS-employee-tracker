@@ -33,7 +33,7 @@ CREATE TABLE employee (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT,
-    -- A FOREIGN KEY in MySQL creates a link between two tables by one specific column of both tables
+    -- A FOREIGN KEY in MySQL allows link between two tables
     CONSTRAINT fk_role
     FOREIGN KEY (role_id)
         REFERENCES role(id) ON DELETE SET NULL,

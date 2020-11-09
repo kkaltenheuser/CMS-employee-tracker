@@ -12,10 +12,9 @@ SELECT * FROM department;
 -- INSERT INTO TABLE : ROLE
 USE employee_DB;
 INSERT INTO role (title, salary, department_id) VALUES ('Marketing Director', '110000', '1');
-INSERT INTO role (title, salary, department_id) VALUES ('Marketing Associate', '65000', '1');
-INSERT INTO role (title, salary, department_id) VALUES ('Sr. Communications Associate', '71000', '2');
-INSERT INTO role (title, salary, department_id) VALUES ('HR Rep 1', '90000', '3');
-INSERT INTO role (title, salary, department_id) VALUES ('In-House Legal Council', '125000', '3');
+INSERT INTO role (title, salary, department_id) VALUES ('Marketing Associate', '65000', '2');
+INSERT INTO role (title, salary, department_id) VALUES ('Sr. Communications Associate', '71000', '3');
+
 
 USE employee_DB;
 SELECT * FROM role;
@@ -28,8 +27,8 @@ SELECT title
 -- INSERT INTO TABLE : EMPLOYEE
 USE employee_DB;
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Ilana', 'Dunn', 1, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Jacklyn', 'Blumenthal', 1, 1);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Ophelia', 'Smith', 2, null);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Jacklyn', 'Blumenthal', 2, 1);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Ophelia', 'Smith', 3, null);
 
 
 USE employee_DB;
@@ -76,7 +75,7 @@ SELECT name AS 'Department Name'
 USE employee_DB;
 UPDATE employee e
     SET
-        e.role_id = ? --? acts as a placeholder
+        e.role_id = ? 
     WHERE
         e.id = ?;
 
