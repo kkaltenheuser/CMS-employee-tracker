@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/kkaltenheuser/CMS-employee-tracker/issues"
   },
-  "homepage": "https://github.com/kkaltenheuser/CMS-employee-tracker#readme"
+  "homepage": "https://github.com/kkaltenheuser/CMS-employee-tracker#readme",
+  "dependencies": {
+    "figlet": "^1.5.0",
+    "inquirer": "^7.3.3",
+    "mysql": "^2.18.1"
+  }
 }
