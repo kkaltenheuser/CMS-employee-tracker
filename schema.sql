@@ -1,48 +1,45 @@
-DROP DATABASE IF EXISTS "";
-CREATE DATABASE "";
--- LETS DATABASE USE DATA--
-USE "";
--- table one--
--- department --
-CREATE TABLE department(
--- id --
-id INT NOT NULL AUTO_INCREMENT,
--- name / varchar 30 --
-department_name VARCHAR (30) NOT NULL,
-PRIMARY KEY (id)
-)
+-- DB if present
+DROP DATABASE IF EXISTS employee_DB;
 
+-- CREATE DB
+CREATE DATABASE employee_DB;
 
+-- USE DB
+USE employee_DB;
 
--- table two --
--- role--
-CREATE TABLE roles (
- -- id --
-id INT NOT NULL AUTO_INCREMENT,
--- title --
-role_title VARCHAR (30) NOT NULL,
--- salary --
-salary DECIMAL (10,2) NOT NULL,
--- department id --
-department_id INT NOT NULL,
-PRIMARY KEY (id)
-)
+-- CREATE TABLE: DEPARTMENT
+CREATE TABLE department (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (id)
+);
 
+-- CREATE TABLE: ROLE
+CREATE TABLE role (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
+    department_id INT,
+    -- CONSTRAINT is used to define rules for columns present in TABLE
+    CONSTRAINT fk_department
+    FOREIGN KEY (department_id)
+        REFERENCES department(id) ON DELETE SET NULL,
+    PRIMARY KEY (id)
+);
 
-
--- table three
--- employee --
+-- CREATE TABLE: EMPLOYEE
 CREATE TABLE employee (
--- id --
-id INT NOT NULL AUTO_INCREMENT,
--- first name --
-first_name VARCHAR(30) NOT NULL,
--- last name --
-last_name VARCHAR(30) NOT NULL,
--- role id --
-role_id INT NOT NULL,
--- manager id --
-manager_id INT NULL,
-PRIMARY KEY (id)
-
-)
+    id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INT,
+    -- A FOREIGN KEY in MySQL creates a link between two tables by one specific column of both tables
+    CONSTRAINT fk_role
+    FOREIGN KEY (role_id)
+        REFERENCES role(id) ON DELETE SET NULL,
+    manager_id INT,
+    CONSTRAINT fk_manager
+    FOREIGN KEY (manager_id)
+        REFERENCES employee(id) ON DELETE SET NULL,
+    PRIMARY KEY (id)
+);
