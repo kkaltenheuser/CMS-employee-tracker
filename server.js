@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
 const figlet = require("figlet");
-const sqlQueries = require("./lib/sql");
+const sqlQueries = require("./sql");
 
 // var - let
 let roleList;
